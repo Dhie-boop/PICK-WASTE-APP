@@ -2,9 +2,12 @@
 
 
 ## Getting Started with Pick Waste Solutions
-1. Prerequisites
-    Install Required Tools
-    Python 3.10+
-    Git
-    Virtual Environment Tools (e.g., venv)
-    PostgreSQL or SQLite
+Before you begin, you'll need the following tools installed on your system:
+
+* Python 3.10+
+* Git
+* Virtual Environment Tools (e.g., venv)
+* PostgreSQL or SQLite
+* An Africa's Talking API Account
+
+## Installation and Setup
