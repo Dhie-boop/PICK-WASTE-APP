@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///waste_management.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
+db = SQLAlchemy(app)
 
 # Create the database and tables
 with app.app_context():
