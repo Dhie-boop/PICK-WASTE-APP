@@ -16,8 +16,8 @@ with app.app_context():
     db.create_all()
 
 # Initialize Africa's Talking with environment variables
-username = os.getenv('AFRICASTALKING_USERNAME', 'davidas')
-api_key = os.getenv('AFRICASTALKING_API_KEY', 'atsk_770cdbd4bfcc606a586c95d34c13e5576b07bb7ffe3fc04f43fad4e4882130bbb869415f')
+username = os.getenv('AFRICASTALKING_USERNAME', 'USERNAME_HERE')
+api_key = os.getenv('AFRICASTALKING_API_KEY', 'API_KEY_HERE')
 
 sms_service = SMS(username, api_key)
 
