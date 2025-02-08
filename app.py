@@ -5,23 +5,23 @@ from sms_service import SMS
 
 app = Flask(__name__)
 
-# Configure the SQLite database
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///waste_management.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-# Create the database and tables
+
 with app.app_context():
     db.create_all()
 
-# Initialize Africa's Talking with environment variables
+
 username = os.getenv('AFRICASTALKING_USERNAME', 'USERNAME_HERE')
 api_key = os.getenv('AFRICASTALKING_API_KEY', 'API_KEY_HERE')
 
 sms_service = SMS(username, api_key)
 
-# Store user sessions in a dictionary
+
 user_sessions = {}
 
 @app.route("/ussd", methods=['POST'])
@@ -33,7 +33,7 @@ def ussd():
 
     if session_id not in user_sessions:
         user_sessions[session_id] = {'step': 0, 'phone_number': phone_number}
-        # Create a new WastePickup record with the phone number
+        
         new_pickup = WastePickup(
             phone_number=phone_number,
             waste_type="",
@@ -46,13 +46,13 @@ def ussd():
 
     session = user_sessions[session_id]
 
-    # Retrieve the current pickup record for this session
+    
     current_pickup = WastePickup.query.filter_by(phone_number=session['phone_number']).order_by(WastePickup.id.desc()).first()
 
-    # Initialize response
+   
     response = ""
 
-    # Extract the latest input part for each step
+   
     latest_input = text.split('*')[-1]
 
     if text == '':
@@ -72,7 +72,7 @@ def ussd():
 
         if latest_input in options:
             session['waste_service'] = options[latest_input]
-            current_pickup.waste_type = session['waste_service']  # This line save the service type here when a user enter data
+            current_pickup.waste_type = session['waste_service']  
             db.session.commit()
             response = f"CON {session['waste_service']} selected.\n"
             response += "Choose Waste Type:\n"
@@ -167,7 +167,7 @@ def ussd():
                 f"Pick Waste Solutions. Empowering Communities for a Cleaner Tomorrow"
             )
 
-            # Send SMS to the dynamic phone number
+            
             sms_service.send(detailed_message, [phone_number])
 
             response = "END Your Waste Pickup request has been submitted. Thank you for using our services!"
