@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# This define the WastePickup model
+
 class WastePickup(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     phone_number = db.Column(db.String(20), nullable=False)
