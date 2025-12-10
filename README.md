@@ -1,4 +1,5 @@
-# Waste Collection App Using USSD Technology Powered by AfricasTalking API 
+# Pick Waste Solutions
+Pick Waste Solutions is a mobile and USSD-based application built with Flask and powered by SQLAlchemy for database management. It leverages USSD technology integrated with the Africa's Talking API to provide a seamless, text-based interface for waste collection services.
 
 
 ## Getting Started with Pick Waste Solutions
